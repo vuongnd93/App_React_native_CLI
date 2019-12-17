@@ -1,11 +1,25 @@
 import axios from 'axios';
 import StartJob from '../redux/reducer/StartJob';
+const urlGetJob = 'https://hcerp.vn/ords/retail/Delivery/Get_Deliveries';
+// const urlGetJob = 'https://jsonplaceholder.typicode.com/todos/1';
 const urlGetJobType = 'http://221.133.17.20:3030/api/view';
-const urlStartEndJob = 'http://221.133.17.20:3030/api/viewstart';
-const urlCompletedJob = 'http://221.133.17.20:3030/api/viewend';
+
+//   function* getJobTypeApi(){
+//     try {
+//       let response = yield axios(
+//         'http://221.133.17.20:3030/api/view',
+//       );
+//       console.log(response.datafake);
+//       const JobType = yield response.status === 200 ? response.datafake: []  
+//       // console.log(JobType);     
+//       return JobType;
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }
 
 function* getJobTypeApi() {
-    const response = yield axios(urlGetJobType, {
+    const response = yield axios(urlGetJob, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -14,8 +28,9 @@ function* getJobTypeApi() {
         data: '',
       
     });
-    // console.log(response);
-    const JobType = yield response.status === 200 ? response.data.datafake: []  
+    
+    // console.log(response.data.data); 
+    const JobType = yield response.status === 200 ? response.data.data: []  
     // console.log(JobType);     
     return JobType;
 }

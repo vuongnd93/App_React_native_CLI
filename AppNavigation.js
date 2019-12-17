@@ -22,8 +22,8 @@ const MainNavigator = createStackNavigator({
       JobList: {screen :JobList },
       JobDetail: {screen: JobDetail},
       EventComponent: {screen: EventComponent },  
-    EvenOnGo: {screen: EventOnGo },
-    // ShowMapView: {screen: ShowMapView },
+      EvenOnGo: {screen: EventOnGo },
+    //  ShowMapView: {screen: ShowMapView },
       MainScreen: {
         screen: MainComponent,        
     },

@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Image,
   Button,Alert,TouchableOpacity,ScrollView,
   Dimensions,StatusBar,TextInput,Modal,TouchableHighlight,
-  AsyncStorage
  } from 'react-native';
+// import AsyncStorage from '@react-native-community/async-storage';
+import {AsyncStorage} from 'react-native';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Swipeout from 'react-native-swipeout';

@@ -50,7 +50,7 @@ export default class ShowMapView extends Component {
   }
 
   componentWillMount() {
-    navigator.geolocation.getCurrentPosition(
+    geolocation.getCurrentPosition(
       position => {
         console.log('Get location START');
         console.log(position);
@@ -64,7 +64,7 @@ export default class ShowMapView extends Component {
       { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 }
     );
 
-    navigator.geolocation.watchPosition(
+   geolocation.watchPosition(
       position => {
         console.log('Location change')
         console.log(position);

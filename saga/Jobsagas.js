@@ -10,7 +10,8 @@ function* FetchJob() {
     try {
         const receivedJob = yield Api.getJobTypeApi();         
         yield put({ type: 'FETCH_SUCCEEDED',receivedJob: receivedJob});         
-    } catch (error) {        
+    } catch (error) {    
+        console.log(error);  
         yield put({ type:'FETCH_FAILED', error });
     }
 }
