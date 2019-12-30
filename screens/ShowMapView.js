@@ -49,39 +49,7 @@ export default class ShowMapView extends Component {
     };
   }
 
-  componentWillMount() {
-    geolocation.getCurrentPosition(
-      position => {
-        console.log('Get location START');
-        console.log(position);
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null
-        });
-      },
-      error => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 }
-    );
-
-   geolocation.watchPosition(
-      position => {
-        console.log('Location change')
-        console.log(position);
-        const { latitude, longitude } = position.coords;
-        const { routeCoordinates } = this.state;
-        const newCoordinate = { latitude, longitude };
-        this.setState({
-          latitude,
-          longitude,
-          routeCoordinates: routeCoordinates.concat([newCoordinate])
-        });
-      },
-      (error) => alert(JSON.stringify(error)),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 0, distanceFilter: 1 });
-  }
-
-
+ 
   getMapRegion = () => ({
     latitude: this.state.latitude,
     longitude: this.state.longitude,

@@ -1,19 +1,70 @@
 import * as React from 'react';
-import Constants from 'expo-constants';
 import { Text, View, StyleSheet, Image,TouchableOpacity } from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
+// import {CheckBox} from 'react-native-elements';
 import Setting from '../assets/setting.jpg';
 import Home from '../assets/homecustom.jpg';
 import Pay from '../assets/checkout.jpg';
 import CheckTick from '../assets/tick_check.png';
 import Transport from '../assets/transport.png';
-import Loading from '../assets/loading.png';
+// import Loading from '../assets/loading.png';
 import Showright from '../assets/buy_plus.png';
-export default class JobDetail extends React.Component {
-  
+
+
+
+export default class OnGO extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = ({
+       showevent:false,
+        event:'',
+        selectedCheckbox: {}, 
+        checkboxValue: [
+            {
+            label: "Tắc Đường",
+            value: 1
+            },
+            {
+            label: "Hết Xăng",
+            value: 2
+            },
+            {
+            label: "Tai Nạn Giao Thông",
+            value: 3
+            },
+            {
+            label: "Option4",
+            value: 4
+            },
+            {
+            label: "Option5",
+            value: 5
+            }
+        ]
+ })
+}
+
+_onEven_checkbox = () => {
+  const { checkboxValue, selectedCheckbox } = this.state;
+  return (
+      <View style={styles.check_box}>
+        {checkboxValue.map(option=>{                 
+                        return(<CheckBox
+                            key={option.value}
+                            title={option.label}               
+                            checked={option.value === selectedCheckbox.value}
+                            // checked={checked}
+                            onPress={()=>{this.CheckMe(option)}}
+                          />)                      
+                    })}        
+      </View>)
+}
+
   check_job(){
 
   }
   render() {
+    const { checkboxValue, selectedCheckbox,} = this.state;
     return (
      <View style={styles.container}>
 
@@ -43,13 +94,18 @@ export default class JobDetail extends React.Component {
                          Trên Đường Đi
                        </Text>
                 </View>
+              
                  <View style={styles.flex_check}>
-                    <TouchableOpacity  >                               
+                    <TouchableOpacity
+                  onPress={()=> this.setState({showevent:!this.state.showevent})}>                                                                                    
                       <Image source={Showright} style={{ width: 25, height: 25, marginRight: 10, }}/>    
                     </TouchableOpacity>                            
                 </View>   
 
             </TouchableOpacity> 
+            {(this.state.showevent== true)?this._onEven_checkbox():null}
+           
+        
             <View style={styles.title} >
                 <View style={styles.flex_image}>
                    <Image source={Home} style={{ width: 30, height: 30, marginRight: 10, }}/>          
@@ -116,7 +172,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
     padding: 8,
   },

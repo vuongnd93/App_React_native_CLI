@@ -10,6 +10,9 @@ export function DECREMENT() {
 export function START(Oder_detail_id,oder_state) {
     return { type: 'START',Oder_detail_id,oder_state};
 }
+export function STARTLVC(P_DEL_ID,P_START_BY) {
+    return { type: 'STARTLVC',P_DEL_ID,P_START_BY};
+}
 export function STARTJOB() {
     return { type: 'STARTJOB' };
 }

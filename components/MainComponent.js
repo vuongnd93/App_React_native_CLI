@@ -40,9 +40,9 @@ export default class MainComponent extends Component {
             this.props.navigation.setParams({ isSaving: false });
         }, 3000);
     }
-    componentDidMount() {
-        this.props.navigation.setParams({ onSave: this._onSave.bind(this), isSaving: false });
-    }
+    // componentDidMount() {
+    //     this.props.navigation.setParams({ onSave: this._onSave.bind(this), isSaving: false });
+    // }
     render() {           
         const { navigation } = this.props; 
         let dataSendToDetail = {

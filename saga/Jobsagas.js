@@ -5,6 +5,7 @@ import AsyncStorage from 'react-native';
 import { put, takeLatest } from 'redux-saga/effects';
 import { Api } from './Api';
 
+
 function* FetchJob() {
     console.log(`This is FETCH_JOB`);
     try {
@@ -17,6 +18,23 @@ function* FetchJob() {
 }
 export function* watchFetchJob() {
     yield takeLatest('FETCH_JOB', FetchJob);
+}
+function* STARTLVC(action) {
+    console.log(`This is STARTLVC`);
+    try {
+        const startlvc = yield Api.STARTLVC(action.P_DEL_ID,action.P_START_BY); 
+        if (startlvc==='OK'){
+            const receivedJob = yield Api.getJobTypeApi();
+            yield put({ type: 'FETCH_SUCCEEDED',receivedJob: receivedJob});   
+        }        
+             
+    } catch (error) {    
+        console.log(error);  
+        yield put({ type:'STARTLVC_FAILED', error });
+    }
+}
+export function* watchSTARTLVC() {
+    yield takeLatest('STARTLVC', STARTLVC);
 }
 
 function* statJob(action) {

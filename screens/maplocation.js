@@ -24,24 +24,6 @@ export default class MapPUT extends Component {
     location: {coords: { latitude: 21.072325, longitude: 105.786573}},
   };
 
-  componentDidMount() {
-    this._getLocationAsync();
-    this._postlocation()
-    // setInterval(() => {
-    //   console.log('Interval triggered');
-    //   this._postlocation()
-    // }, 3000);
-}
-  componentDidCatch(){
-    BackgroundTimer.runBackgroundTimer(() => { 
-      console.log('Interval triggered');
-      }, 
-      3000);
-    // setInterval(() => {
-    //   console.log('Interval triggered');
-    //   this._postlocation()
-    // }, 3000);
-  }
 
   _handleMapRegionChange = mapRegion => {
     this.setState({ mapRegion });

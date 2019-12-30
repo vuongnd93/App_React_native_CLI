@@ -12,6 +12,13 @@ import axios from 'axios';
 
 const LOCATION_TASK_NAME = 'background-location-task';
 const getApex = 'http://118.70.197.124/ords/retail/delivery/login?';
+const params = {
+  client_id: 'tIX4nvLBwRwa7LgNFLOMoQ..',
+  client_secret: 'Iy4ZNpW0g3ntgr4TFs6JLQ..',
+  grant_type: 'client_credentials',
+};
+
+
 export default class Login extends React.Component {
     state = {
       email: '',
@@ -21,10 +28,33 @@ export default class Login extends React.Component {
     static navigationOptions ={
       title: 'Đăng Nhập',
     };
-    componentDidMount = async () => {
-     
-    };
+    
 
+  
+    // componentwillmount(){
+    //   axios
+    //   .request({
+    //     url:
+    //       'https://hcerp.vn/ords/retail/oauth/token?grant_type=client_credentials',
+    //     method: 'post',
+    //     // baseURL: 'http://sample.oauth.server.com/',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       Authorization: `Basic dElYNG52TEJ3UndhN0xnTkZMT01vUS4uOkl5NFpOcFcwZzNudGdyNFRGczZKTFEuLg==`,
+    //     },
+
+    //     data: {
+    //       grant_type: 'client_credentials',
+    //       scope: 'test',
+    //     },
+    //   })
+    //   .then(respose => {
+    //     console.log(respose);
+    //   });
+     
+    // };
+
+   
   onLogin() {
     const { email, password } = this.state;
    

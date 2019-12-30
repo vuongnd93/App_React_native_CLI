@@ -32,36 +32,22 @@ class JobList extends React.Component {
     }
 };
 
-  componentWillMount() {
-    console.log('#jobList.status_current')
-    // const { params } = this.props.navigation.state;
-    //  const oder_detail_id = params.oder_detail_id;
-    //  const { btnStatus, myData } = this.props;
-    //  let status= "";
-    //     myData.map(e=>{
-    //      e.oder_detail.map(e1=>{
-    //        if(e1.Oder_detail_id==oder_detail_id){
-    //             status=e1.status 
-    //        }              
-    //      });     
-    //    });
-    //  console.log('#joblist: status_curent:',status);
-  
-   }
+  // componentWillMount() {
+  //  }
   get_Oder_Detail(){
        const { params } = this.props.navigation.state;
     let job_id = params.job_id;
     let myData = this.props.myData;
     let btnStatus=this.props.btnStatus;
-    let oder_detail= "";
+    let orders= "";
        myData.map(e=>{
-         if(e.Oder_id==job_id){
-          oder_detail=e.oder_detail;
+         if(e.delivery_id==job_id){
+          orders=e.orders;
          }
       });
-      if (btnStatus === 'PROCESSING') return oder_detail.filter(e => e.status === 'PROCESSING');
-      if (btnStatus === 'COMPLETED') return oder_detail.filter(e => e.status === 'COMPLETED');
-    return oder_detail;
+      if (btnStatus === 'PROCESSING') return orders.filter(e => e.status === 'PROCESSING');
+      if (btnStatus === 'COMPLETED') return orders.filter(e => e.status === 'COMPLETED');
+    return orders;
   }
 
   // getWordList() {
@@ -100,13 +86,13 @@ class JobList extends React.Component {
 
             data={this.get_Oder_Detail()}
             renderItem={({ item }) => <JobListItems
-              Oder_detail_id={item.Oder_detail_id}
-              id={item.Order}
+            order_id={item.order_id}
+              id={item.đơn_hàng}
               time={item.Odertime}
               status={item.status}
-              onPress={() => this.props.navigation.navigate('JobDetail', { job_id:job_id,oder_detail_id:item.Oder_detail_id,item })}
+              onPress={() => this.props.navigation.navigate('ProductDetail', { job_id:job_id,order_id:item.order_id,item })}
             />}
-            keyExtractor={item => item.Oder_detail_id}
+            keyExtractor={item => item.order_id}
           />
         </View>
         <Filter />

@@ -25,45 +25,18 @@ class JobListItems extends React.Component {
       title: 'List công việc'
     }
   };
-  componentWillMount() {
-    // const { params } = this.props.navigation.state;
-    //  const oder_detail_id = params.oder_detail_id;
-    //  const { btnStatus, myData } = this.props;
-    //  let status= "";
-    //     myData.map(e=>{
-    //      e.oder_detail.map(e1=>{
-    //        if(e1.Oder_detail_id==oder_detail_id){
-    //             status=e1.status 
-    //        }              
-    //      });     
-    //    });
-    //  console.log('#jobdetail: status_curent:',status);
-  
-   }
-  // onStatusOder(){
-  //   const { btnStatus, myData } = this.props;
-  //   const Oder_detail_id =this.props.Oder_detail_id
-  //  let status= "";
-  //      myData.map(e=>{
-  //       e.oder_detail.map(e1=>{
-  //         if(e1.Oder_detail_id==Oder_detail_id){
-  //           status=e1.status 
-  //          }         
-  //       });     
-  //     });
-  //     console.log('#joblistitem.e1.status',status);
-  //     return status
-     
-  // }
-
+  // componentWillMount() {
+    
+  //  }
+ 
   render() {
     const { btnStatus, myData } = this.props;
-    const Oder_detail_id =this.props.Oder_detail_id
+    const order_id =this.props.order_id
      let status= "";
     //  let oder_state="";
        myData.map(e=>{
-        e.oder_detail.map(e1=>{
-          if(e1.Oder_detail_id==Oder_detail_id){
+        e.orders.map(e1=>{
+          if(e1.order_id==order_id){
             status=e1.status; 
            }         
         });     
@@ -72,23 +45,15 @@ class JobListItems extends React.Component {
 
       <TouchableOpacity
         disabled={
-         (status==='INACTIVE')&(this.props.stateOder==='INACTIVE')?false:
-         (status==='INACTIVE')&(this.props.stateOder==='ACTIVE')?true:
-         (status==='COMPLETED')?true: false   
+         (status==='W')?false:true    
         }
         onPress={this.props.onPress}>
         <View
           style={{
             flexDirection: 'row',
             backgroundColor:
-            (status==='PROCESSING')?'#DD3C6E':
-            (status==='COMPLETED')&(this.props.stateOder==='ACTIVE')?'#808080': 
-            (status==='INACTIVE')&(this.props.stateOder==='INACTIVE')?'#DD3C6E':
-            (status==='INACTIVE')&(this.props.stateOder==='ACTIVE')?'#808080':
-            (status==='PROCESSING')|(this.props.stateOder==='ACTIVE')?'#DD3C6E':
-            (status==='INACTIVE')&(this.props.stateOder==='COMPLETED')?'#DD3C6E':
-            (status==='COMPLETED')?'#808080':'#808080'         
-       ,
+            (status==='W')?'#DD3C6E':     
+            (status==='COMPLETED')?'#808080':'#808080',
             // backgroundColor: '#DD3C6E',
             marginHorizontal: 10,
             marginTop: 10,
@@ -114,9 +79,7 @@ class JobListItems extends React.Component {
           </View>
           <TouchableOpacity
              disabled={
-              (status==='INACTIVE')&(this.props.stateOder==='INACTIVE')?false:
-              (status==='INACTIVE')&(this.props.stateOder==='ACTIVE')?true:
-              (status==='COMPLETED')?true: false   
+              (status==='W')?false:true                    
              }
             onPress={this.props.onPress} >
             <Image source={backSpecial} style={{ width: 20, height: 20, marginVertical: 20 }} />

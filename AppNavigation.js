@@ -10,8 +10,8 @@ import JobType  from  './screens/JobType';
 import JobList  from  './screens/JobList';
 import JobDetail  from  './screens/JobDetail';
 import EventComponent  from  './screens/EventComponent';
-import EventOnGo  from  './screens/EventOnGo';
-// import ShowMapView  from  './screens/ShowMapView';
+import OnGO  from  './screens/OngoEdit';
+import ProductDetail  from  './screens/productdetail';
 
 
 
@@ -20,9 +20,9 @@ const MainNavigator = createStackNavigator({
       Home: {screen: Login},
       JobType: {screen: JobType},
       JobList: {screen :JobList },
-      JobDetail: {screen: JobDetail},
+      ProductDetail: {screen: ProductDetail},
       EventComponent: {screen: EventComponent },  
-      EvenOnGo: {screen: EventOnGo },
+      EvenOnGo: {screen: OnGO },
     //  ShowMapView: {screen: ShowMapView },
       MainScreen: {
         screen: MainComponent,        

@@ -46,18 +46,11 @@ class JobDetail extends React.Component {
   };
 
 
-   componentWillMount() {
-    // if(this._getStatusOder()==='PROCESSING'){
-    //   setInterval(() => {
-    //    console.log('put location to server');
-    //   }, 3000);
-    // }
-   
- 
-  }
-  componentDidMount() {
-    this.props.navigation.setParams({ onsave: this._onsave.bind(this), isSaving: false });
-  }
+  //  componentWillMount() {
+  // }
+  // componentDidMount() {
+  //   this.props.navigation.setParams({ onsave: this._onsave.bind(this), isSaving: false });
+  // }
 
   clearAsyncStorage = async() => {
     AsyncStorage.clear();
@@ -286,13 +279,13 @@ class JobDetail extends React.Component {
     const { params } = this.props.navigation.state;
     const oder_detail_item = params.item;
     // const { params } = this.props.navigation.state;
-    let oder_detail_id = params.oder_detail_id;
+    let order_id = params.order_id;
     // const { btnStatus, myData } = this.state.myData;
     let myData=this.props.myData;
    let status= "";
        myData.map(e=>{
-        e.oder_detail.map(e1=>{
-          if(e1.Oder_detail_id==oder_detail_id){
+        e.orders.map(e1=>{
+          if(e1.order_id==order_id){
                status=e1.status 
           }              
         });     
@@ -305,7 +298,7 @@ class JobDetail extends React.Component {
         <View style={styles.content}>
           <View style={styles.contentdetail}>
             <Text style={styles.oder_infor}>Đơn Hàng:</Text>
-            <Text style={styles.oder_infor}>{oder_detail_item.Order}</Text>
+            <Text style={styles.oder_infor}>{oder_detail_item.đơn_hàng}</Text>
           </View>
           <View style={styles.contentdetail}>
             <Text style={styles.oder_infor}>Tên Khách Hàng:</Text>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Constants from 'expo-constants';
 import { Text, View, StyleSheet, Image,TouchableOpacity } from 'react-native';
 
 export default class ProductDetail extends Component {
@@ -8,7 +7,8 @@ export default class ProductDetail extends Component {
      <View style={styles.container}>
 
         <View style={styles.one}>
-           <TouchableOpacity  style={styles.even}>
+           <TouchableOpacity  style={styles.even}
+           onPress={() => this.props.navigation.navigate('EvenOnGo')}>
                <Text>
                   Sự kiện
                </Text>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
